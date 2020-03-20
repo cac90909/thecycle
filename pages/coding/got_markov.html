@@ -101,11 +101,11 @@
 
               <h2>Analyzing the Dataset</h2>
               <p> There were some inital issues with the dataset in that the values were improperly being seperated.
-                <img src = "..\..\images\coding\got_markov\spreadsheet.jpg"
+                <img src = "..\..\images\coding\got_markov\spreadsheet.JPG"
                 alt src = "" class = "content__img">
                 I applied some delimiting functions in Excel to get that straightened away.</p><p>
                 Moving over to Python, I wanted to get a better glimpse into what exactly I was looking at.
-                <img src = "..\..\images\coding\got_markov\basic_info.jpg"
+                <img src = "..\..\images\coding\got_markov\basic_info.JPG"
                 alt src = "" class = "content__img">
                 The dataset describes various things about each piece of dialogue, including the character who said it,
                 the season/episode it occured in, and the date that that piece of dialogue was aired on TV. Useful stuff.</p><p>
@@ -115,7 +115,7 @@
               <p>
               As someone who, like I said, has never seen an episode of Game of Thrones before, I wanted to get more familiar with
               the nature of the series by seeing <b>how many characters</b> are featured on the show.
-              <img src = "..\..\images\coding\got_markov\characters.jpg"
+              <img src = "..\..\images\coding\got_markov\characters.JPG"
               alt src = "" class = "content__img">
               This screenshot is only a fraction of the characters that play a role in GOT.</p><p>
               The purpose of this project is to generate dialogue, but I wanted to produce the <b>most accurate dialogue</b> possible.
@@ -127,13 +127,13 @@
             I proceeded by filtering the dataframe via the <i>"Name"</i> column and then calling <i>value_counts()</i> on this filtered
             Pandas series because names that have a <b>higher count</b>
             means that they appear more in the dataframe and thus have <b>more lines of dialogue.</b></p>
-            <img src = "..\..\images\coding\got_markov\value_count.jpg"
+            <img src = "..\..\images\coding\got_markov\value_count.JPG"
             alt src = "" class = "content__img">
             <p>I'm not sure who this Tyrion character is, but he/she/it certainly has a lot to say.</p><p>
               I used the following code to generate this next visualization: </p>
-              <img src = "..\..\images\coding\got_markov\matplot.jpg"
+              <img src = "..\..\images\coding\got_markov\matplot.JPG"
               alt src = "" class = "content__img">
-              <img src = "..\..\images\coding\got_markov\bar_chart.jpg"
+              <img src = "..\..\images\coding\got_markov\bar_chart.JPG"
               alt src = "" class = "important__img">
             <p> Yup, quite the chatty Kathy.</p>
             <p> Dialogue frequency is pretty similar within the characters ranked 2nd to 5th, drops a tad
@@ -148,9 +148,9 @@
 
             <p> To start, I created a function that, when given a list of sentences, will flatten out the list to output a list of
               the individual words that comprise each sentence.</p>
-              <img src = "..\..\images\coding\got_markov\get_words.jpg"
+              <img src = "..\..\images\coding\got_markov\get_words.JPG"
               alt src = "" class = "content__img">
-              <img src = "..\..\images\coding\got_markov\get_words_example.jpg"
+              <img src = "..\..\images\coding\got_markov\get_words_example.JPG"
               alt src = "" class = "content__img">
               <p> The original complication was that sentences were spiratically divided into different lists, so I used
                 <b> list comprehension </b> to remove each sentence from its sublist,
@@ -162,9 +162,9 @@
 
               <p> Next, I needed to generate actual chains which entails assigning each word to all of the next potential words.
                 My code and an example of its application is shown in the following screenshots: </p>
-                <img src = "..\..\images\coding\got_markov\generate_markov_chain.jpg"
+                <img src = "..\..\images\coding\got_markov\generate_markov_chain.JPG"
                 alt src = "" class = "content__img">
-                <img src = "..\..\images\coding\got_markov\markov_chain_example.jpg"
+                <img src = "..\..\images\coding\got_markov\markov_chain_example.JPG"
                 alt src = "" class = "content__img">
               <p> The function takes a list of words, loops through the words while simultaneously <b>zipping</b> every word with
                 its preceding word together,
@@ -175,9 +175,9 @@
 
                 <p> Next, I wanted to generate actual dialogue given a list of words and the words to follow them.
                     The code for this and an example of using it is shown in the next two screenshots:</p>
-                  <img src = "..\..\images\coding\got_markov\generate_sentence.jpg"
+                  <img src = "..\..\images\coding\got_markov\generate_sentence.JPG"
                   alt src = "" class = "content__img">
-                  <img src = "..\..\images\coding\got_markov\generate_sentence_example.jpg"
+                  <img src = "..\..\images\coding\got_markov\generate_sentence_example.JPG"
                   alt src = "" class = "content__img">
                 <p>The <i>generate_sentence()</i> function requires two arguments: a <b>dictionary of words</b>
                   and the <b>max number of desired words in a sentence.</b>
@@ -196,7 +196,7 @@
                      I needed to be able to automate this process when given an<i> n amount
                     of characters</i>, so I built the <i> create_dicts() </i> function to do just that. The code for this function
                     is shown in the following: </p>
-                    <img src = "..\..\images\coding\got_markov\create_dicts.jpg"
+                    <img src = "..\..\images\coding\got_markov\create_dicts.JPG"
                     alt src = "" class = "content__img">
                   <p> The function requires an input for the amount of characters you wanted to generate a dictionary for.
                     Because of accuracy implications, it assumes that for whatever <i>n</i> quantity of characters that you want to
@@ -213,7 +213,7 @@
                    <h2> Lights, Camera, Action! </h2>
                    <p>
                     This program culminates with the <i>create_scripts()</i> function, whose code is shown below: </p>
-                    <img src = "..\..\images\coding\got_markov\create_scripts.jpg"
+                    <img src = "..\..\images\coding\got_markov\create_scripts.JPG"
                     alt src = "" class = "content__img">
                     <p>
                       The function begins by creating a list of character dictionaries based on the desired number of characters
@@ -235,7 +235,7 @@
                       and I want my dialogue to be <b>20 lines</b> long with each line
                       comprised of at most <b>12 words.</b>
                       Doing so produced the following output:</p>
-                      <img src = "..\..\images\coding\got_markov\create_scripts_example.jpg"
+                      <img src = "..\..\images\coding\got_markov\create_scripts_example.JPG"
                       alt src = "" class = "content__img">
                     <p> I'm not too sure that George R. Martin would be proud of this writing, but I certainly am!</p><p>
                       As you can see, it seems pretty random and perhaps even the product of a madlib game
