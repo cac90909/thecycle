@@ -7,24 +7,24 @@
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" href = "C:\Users\Christopher\Desktop\thecycle\css\coding\got_markov.css">
+    <link rel = "stylesheet" href = "..\..\css\coding\got_markov.css">
     <script src="https://kit.fontawesome.com/7acb9305dd.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
       <div class = "logo">
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
+        <img src = "..\..\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
       </div>
       <button class = "nav-toggle" aria-label="toggle navigation">
         <span class = "hamburger"></span>
       </button>
       <nav class = "nav">
         <ul class = "nav__list">
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\index.html"
+          <li class = "nav__item"><a href = "..\..\index.html"
             class = "nav__link" style = "font-size: 4.0rem;">Home</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
+          <li class = "nav__item"><a href = "..\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
+          <li class = "nav__item"><a href = "..\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
+          <li class = "nav__item"><a href = "..\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
         </ul>
       </nav>
     </header>
@@ -36,7 +36,7 @@
       <p class = "section__subtitle section__subtitle--intro">March 18th, 2020</p>
     </section>
 
-    <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\intro_img.jpg" alt="" class = "intro__img">
+    <img src = "..\..\images\coding\got_markov\intro_img.jpg" alt="" class = "intro__img">
 
     <div class = "portfolio-item-individual">
       <p> What started out to be an introductory level Natural Language Processing (NLP) project
@@ -101,11 +101,11 @@
 
               <h2>Analyzing the Dataset</h2>
               <p> There were some inital issues with the dataset in that the values were improperly being seperated.
-                <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\spreadsheet.jpg"
+                <img src = "..\..\images\coding\got_markov\spreadsheet.jpg"
                 alt src = "" class = "content__img">
                 I applied some delimiting functions in Excel to get that straightened away.</p><p>
                 Moving over to Python, I wanted to get a better glimpse into what exactly I was looking at.
-                <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\basic_info.jpg"
+                <img src = "..\..\images\coding\got_markov\basic_info.jpg"
                 alt src = "" class = "content__img">
                 The dataset describes various things about each piece of dialogue, including the character who said it,
                 the season/episode it occured in, and the date that that piece of dialogue was aired on TV. Useful stuff.</p><p>
@@ -115,7 +115,7 @@
               <p>
               As someone who, like I said, has never seen an episode of Game of Thrones before, I wanted to get more familiar with
               the nature of the series by seeing <b>how many characters</b> are featured on the show.
-              <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\characters.jpg"
+              <img src = "..\..\images\coding\got_markov\characters.jpg"
               alt src = "" class = "content__img">
               This screenshot is only a fraction of the characters that play a role in GOT.</p><p>
               The purpose of this project is to generate dialogue, but I wanted to produce the <b>most accurate dialogue</b> possible.
@@ -127,13 +127,13 @@
             I proceeded by filtering the dataframe via the <i>"Name"</i> column and then calling <i>value_counts()</i> on this filtered
             Pandas series because names that have a <b>higher count</b>
             means that they appear more in the dataframe and thus have <b>more lines of dialogue.</b></p>
-            <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\value_count.jpg"
+            <img src = "..\..\images\coding\got_markov\value_count.jpg"
             alt src = "" class = "content__img">
             <p>I'm not sure who this Tyrion character is, but he/she/it certainly has a lot to say.</p><p>
               I used the following code to generate this next visualization: </p>
-              <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\matplot.jpg"
+              <img src = "..\..\images\coding\got_markov\matplot.jpg"
               alt src = "" class = "content__img">
-              <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\bar_chart.jpg"
+              <img src = "..\..\images\coding\got_markov\bar_chart.jpg"
               alt src = "" class = "important__img">
             <p> Yup, quite the chatty Kathy.</p>
             <p> Dialogue frequency is pretty similar within the characters ranked 2nd to 5th, drops a tad
@@ -148,9 +148,9 @@
 
             <p> To start, I created a function that, when given a list of sentences, will flatten out the list to output a list of
               the individual words that comprise each sentence.</p>
-              <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\get_words.jpg"
+              <img src = "..\..\images\coding\got_markov\get_words.jpg"
               alt src = "" class = "content__img">
-              <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\get_words_example.jpg"
+              <img src = "..\..\images\coding\got_markov\get_words_example.jpg"
               alt src = "" class = "content__img">
               <p> The original complication was that sentences were spiratically divided into different lists, so I used
                 <b> list comprehension </b> to remove each sentence from its sublist,
@@ -162,9 +162,9 @@
 
               <p> Next, I needed to generate actual chains which entails assigning each word to all of the next potential words.
                 My code and an example of its application is shown in the following screenshots: </p>
-                <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\generate_markov_chain.jpg"
+                <img src = "..\..\images\coding\got_markov\generate_markov_chain.jpg"
                 alt src = "" class = "content__img">
-                <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\markov_chain_example.jpg"
+                <img src = "..\..\images\coding\got_markov\markov_chain_example.jpg"
                 alt src = "" class = "content__img">
               <p> The function takes a list of words, loops through the words while simultaneously <b>zipping</b> every word with
                 its preceding word together,
@@ -175,9 +175,9 @@
 
                 <p> Next, I wanted to generate actual dialogue given a list of words and the words to follow them.
                     The code for this and an example of using it is shown in the next two screenshots:</p>
-                  <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\generate_sentence.jpg"
+                  <img src = "..\..\images\coding\got_markov\generate_sentence.jpg"
                   alt src = "" class = "content__img">
-                  <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\generate_sentence_example.jpg"
+                  <img src = "..\..\images\coding\got_markov\generate_sentence_example.jpg"
                   alt src = "" class = "content__img">
                 <p>The <i>generate_sentence()</i> function requires two arguments: a <b>dictionary of words</b>
                   and the <b>max number of desired words in a sentence.</b>
@@ -196,7 +196,7 @@
                      I needed to be able to automate this process when given an<i> n amount
                     of characters</i>, so I built the <i> create_dicts() </i> function to do just that. The code for this function
                     is shown in the following: </p>
-                    <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\create_dicts.jpg"
+                    <img src = "..\..\images\coding\got_markov\create_dicts.jpg"
                     alt src = "" class = "content__img">
                   <p> The function requires an input for the amount of characters you wanted to generate a dictionary for.
                     Because of accuracy implications, it assumes that for whatever <i>n</i> quantity of characters that you want to
@@ -213,7 +213,7 @@
                    <h2> Lights, Camera, Action! </h2>
                    <p>
                     This program culminates with the <i>create_scripts()</i> function, whose code is shown below: </p>
-                    <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\create_scripts.jpg"
+                    <img src = "..\..\images\coding\got_markov\create_scripts.jpg"
                     alt src = "" class = "content__img">
                     <p>
                       The function begins by creating a list of character dictionaries based on the desired number of characters
@@ -235,7 +235,7 @@
                       and I want my dialogue to be <b>20 lines</b> long with each line
                       comprised of at most <b>12 words.</b>
                       Doing so produced the following output:</p>
-                      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\got_markov\create_scripts_example.jpg"
+                      <img src = "..\..\images\coding\got_markov\create_scripts_example.jpg"
                       alt src = "" class = "content__img">
                     <p> I'm not too sure that George R. Martin would be proud of this writing, but I certainly am!</p><p>
                       As you can see, it seems pretty random and perhaps even the product of a madlib game
@@ -300,7 +300,7 @@
     </footer>
 
 
-    <script src="C:\Users\Christopher\Desktop\thecycle\js\index.js"></script>
+    <script src="..\..\js\index.js"></script>
 
     </body>
   </html>

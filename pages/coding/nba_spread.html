@@ -7,24 +7,24 @@
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" href = "C:\Users\Christopher\Desktop\thecycle\css\coding\nba_spread.css">
+    <link rel = "stylesheet" href = "..\..\css\coding\nba_spread.css">
     <script src="https://kit.fontawesome.com/7acb9305dd.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
       <div class = "logo">
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
+        <img src = "..\..\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
       </div>
       <button class = "nav-toggle" aria-label="toggle navigation">
         <span class = "hamburger"></span>
       </button>
       <nav class = "nav">
         <ul class = "nav__list">
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\index.html"
+          <li class = "nav__item"><a href = "..\..\index.html"
             class = "nav__link" style = "font-size: 4.0rem;">Home</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
-          <li class = "nav__item"><a href = "C:\Users\Christopher\Desktop\thecycle\pages\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
+          <li class = "nav__item"><a href = "..\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
+          <li class = "nav__item"><a href = "..\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
+          <li class = "nav__item"><a href = "..\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
         </ul>
       </nav>
     </header>
@@ -36,7 +36,7 @@
       <p class = "section__subtitle section__subtitle--intro">March 6th, 2020</p>
     </section>
 
-    <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\lebron.png" alt="" class = "intro__img">
+    <img src = "..\..\images\coding\nba_spread\lebron.png" alt="" class = "intro__img">
 
     <div class = "portfolio-item-individual">
       <p>After having spent a large chunk of time learning the basics of various Python data and data science libraries
@@ -108,13 +108,13 @@
       <p>I started the scraping process by gathering a list of links to the box scores of all Lakers games.
          Luckily, basketball reference made this part easy. For each team, they list out the schedule and the box
          score for the corresponding game.</p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\basketball_reference_schedule.jpg"
+      <img src = "..\..\images\coding\nba_spread\basketball_reference_schedule.jpg"
       alt src = "" class = "content__img">
       <p>I looped through each row of the table and if a data point from a row had an id value of <i>box_score_text</i>, then it
         would be added to my list of links.</p>
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\list_of_links_function.jpg"
+        <img src = "..\..\images\coding\nba_spread\list_of_links_function.jpg"
         alt src = "" class = "content__img">
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\list_of_links_output.jpg"
+        <img src = "..\..\images\coding\nba_spread\list_of_links_output.jpg"
         alt src = "" class = "content__img">
       <p>Now that I had gathered every link to the Lakers 82 game schedule, the problem became that not every one of those links has a
         box score component. This is because the Lakers are in the midst of their season and haven't played all their games.
@@ -131,25 +131,25 @@
          the length of the list of links should be the length of our datetime object list.
          I made this happen by indexing the list of links to the length of the datetime object list.
          This process can be visualized below:</p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\trimming_list_of_links.jpg"
+      <img src = "..\..\images\coding\nba_spread\trimming_list_of_links.jpg"
       alt src = "" class = "content__img">
       <p>Additionally, this process allowed me to secure a list of dates for all the games played which
         became useful when I constructed my dataframe later on. </p>
       <p>At that point, I was ready to loop through my list of links to gather the team stats on the Lakers.
         This is illustrated in the following: </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\looping_through_list_of_links.jpg"
+      <img src = "..\..\images\coding\nba_spread\looping_through_list_of_links.jpg"
       alt src = "" class = "content__img">
       <p>Then I could combine the stats and the dates gathered into a <b>single dataframe</b>.</p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\dataframe_call.jpg"
+      <img src = "..\..\images\coding\nba_spread\dataframe_call.jpg"
       alt src = "" class = "content__img">
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\dataframe.jpg"
+      <img src = "..\..\images\coding\nba_spread\dataframe.jpg"
       alt src = "" class = "content__img">
       <h2>Analyzing the Data</h2>
       <p>Having the sufficient data gathered, I wanted to analyze the data to see if I could uncover any meaningful trends.
         Starting out, I wanted to see what my data looked like, so I plotted a distribution of all the y-values of <b>Points For</b>.
         I plotted Points For instead of spread because our dataset did not include how many points the opposing team scored,
         but because Points For is a component of spread, this is not an issue.</p>
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\points_for_dist.jpg"
+        <img src = "..\..\images\coding\nba_spread\points_for_dist.jpg"
         alt src = "" class = "content__img">
       <p>The Lakers’ point distribution is <b>higher</b> than the League’s average of
         <a href = "https://www.basketball-reference.com/leagues/NBA_stats_per_game.html" class = "inline-link" target = "_blank"> 111 </a>
@@ -157,19 +157,19 @@
         that the Lakers are currently <b>47-9</b> and <b>first place</b> in their conference.</p>
       <p>Before moving on to the regression step, I constructed a <b>correlation matrix</b> to see how my variables related
         to one another. </p>
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\corr_matrix.jpg"
+        <img src = "..\..\images\coding\nba_spread\corr_matrix.jpg"
         alt src = "" class = "content__img">
       <p> There were a lot of <b>strong correlations</b> (r > .7) from this matrix. For example, FG and FG% have a .85 correlation value,
         which, again, makes sense considering the two values are intrinsically very related.
         I got rid of the redundant features from the model that measure similar basketball metrics. </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\statsmodel.api.jpg"
+      <img src = "..\..\images\coding\nba_spread\statsmodel.api.jpg"
       alt src = "" class = "content__img">
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\model1_result.jpg"
+      <img src = "..\..\images\coding\nba_spread\model1_result.jpg"
       alt src = "" class = "content__img">
       <p>This model produced a good <b>adjusted R-squared value</b>, but the model includes a decent number of variables
         that do not have statistical significance, so I removed them from the model.
         In doing so, the following regression resulted: </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\model2_result.jpg"
+      <img src = "..\..\images\coding\nba_spread\model2_result.jpg"
       alt src = "" class = "content__img">
       <p>Corresponding to the sequential x-value, the model included the following features:<ul>
         <li>Field Goals Attempted</li>
@@ -180,13 +180,13 @@
         <li>Steals</li>
         <li>Personal Fouls</li></ul> </p>
       <p>Next, I used <b>scikit-learn</b> to make some predictions and <b>matplotlib</b> to visualize them. </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\model_prediction_code.jpg"
+      <img src = "..\..\images\coding\nba_spread\model_prediction_code.jpg"
       alt src = "" class = "content__img">
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\model_bar_graph.jpg"
+      <img src = "..\..\images\coding\nba_spread\model_bar_graph.jpg"
       alt src = "" class = "content__img">
       <p>And finally, I evaluated this model based on its measures of error. I specifically considred
         the model’s <b>Mean Absolute Error</b>, <b>Mean Squared Error</b>, and <b>Square Root of Mean Squared Error</b>. </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\model_error_terms.jpg"
+      <img src = "..\..\images\coding\nba_spread\model_error_terms.jpg"
       alt src = "" class = "content__img">
       <p>Based off of this output, the model seemed to perform decently well at predicting outcome.
         All of the regression coefficients were significant, the x-variables were independent,
@@ -225,7 +225,7 @@
         My rationale being that a team with a <b>better defense</b> is going to <b>force their opponent</b> to <b>average lower core stats</b>.
         I realize that this sounds very wordy, but I’m going to draw it out.
         Let’s take, for example, the Lakers and Bucks matchup that is happening tonight: </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\prediction_flowchart.jpg"
+      <img src = "..\..\images\coding\nba_spread\prediction_flowchart.jpg"
       alt src = "" class = "content__img">
       <p>I always <b>balance out</b> teams average core stats with the team that they are playing opponents’ core stats,
         because this serves to be a weight for that team’s defensive performance.
@@ -235,7 +235,7 @@
         except I had to add more comparison statements because it is not quite as easy to identify a team’s opponents
         in HTML compared to the original team itself.
         Regardless, the code is shown below:</p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\gathering_opp_data.jpg"
+      <img src = "..\..\images\coding\nba_spread\gathering_opp_data.jpg"
       alt src = "" class = "content__img">
       <p>Up to this point, I had written all the individual parts necessary to calculate the predictions.
         I just needed to combine these individual parts and then wrap them into a function
@@ -251,7 +251,7 @@
         Again, all of this code can be found on my
         <a href = "https://github.com/cac90909/NBA_Project" class = "inline-link" target = "_blank">GitHub page.</a> </p>
       <p>The input and output of this function is going to look something like this: </p>
-      <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\gatherAndAnalyze.jpg"
+      <img src = "..\..\images\coding\nba_spread\gatherAndAnalyze.jpg"
       alt src = "" class = "content__img">
       <p>The last function I wanted to write was one to automate this calling of <i>gatherAndAnalyze()</i>.
         I wanted to be able to just type in the name of the function and have it predict the scores of all the games played today.
@@ -259,22 +259,22 @@
         <p>  Basketball reference organizes their
           games in a monthly manner, as shown in the image at the beginning of this article when talking about extracting box score links,
           so the standard link for this month's games would look like this: </p>
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\month_link.jpg"
+        <img src = "..\..\images\coding\nba_spread\month_link.jpg"
         alt src = "" class = "content__img">
         <p>In order to assemble this link, I simply made a datetime object for the current time, extracted the month,
           and then translated it into the name of
           the actual month using this <b>dictionary</b>:</p>
-          <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\months_mapped.jpg"
+          <img src = "..\..\images\coding\nba_spread\months_mapped.jpg"
           alt src = "" class = "content__img">
         <p>Next, I did a comparison to make sure I was only looking at games for the current date, then sliced the strings of those
           table rows for the names of the actual teams.
           With the aid of list comprehension, anonymous functions, and mappings, this process was made fairly easy.
-          <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\fancy_function_calls.jpg"
+          <img src = "..\..\images\coding\nba_spread\fancy_function_calls.jpg"
           alt src = "" class = "content__img">
         <p>All that was left to do was loop through the list of teams playing today,
           pair off each sequential team as a matchup, and then call
           <i>gatherAndAnalyze()</i> on each matchup. The input and output of this process is illustrated below: </p>
-          <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\final_automation.jpg"
+          <img src = "..\..\images\coding\nba_spread\final_automation.jpg"
           alt src = "" class = "content__img">
       <h2>Evaluating the Model</h2>
       <p>Over the next week, I ran this program on all the games played, collecting a sample size of around 60.
@@ -283,7 +283,7 @@
         which is pretty significant considering spreads will typically range from 1 - 20 (in absolute value terms). </p>
       <p>However, my model did perform pretty well when it came to actually predicting the outcome of that same sample.
         It displayed a <b>75% accuracy rating</b> in correctly predicting outcome.</p>
-        <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\predict_Excel.jpg"
+        <img src = "..\..\images\coding\nba_spread\predict_Excel.jpg"
         alt src = "" class = "content__img">
         <p>
         However, this might be due to the fact that a lot of basketball games are
@@ -310,7 +310,7 @@
           So, I made an account on the sports betting website "Bovada".
           I'm not going to lie, there is definetly an initial learning curve to fully understanding how the betting process works
           because the layout and numbers are mildly confusing:</p>
-            <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\bovada_example.jpg"
+            <img src = "..\..\images\coding\nba_spread\bovada_example.jpg"
             alt src = "" class = "content__img">
         <p>But after about 45 minutes of YouTube tutorial on "how to place sports bets", I finally gained a stronger understanding.
           When it came time to actually placing some bets, I honestly did pretty well.
@@ -323,7 +323,7 @@
           put money down on that team. Despite a constant paranoia that my model was trying to seek revenge on my bank account,
           I actually ended up with a solid <b>return on investment</b>. I initially put in $30, which was accompanied by a $15 bonus
           fund paid for by Bovada as a part of one of their promotions, and ended up with a little over <b>$70</b> in my Bovada account.
-          <img src = "C:\Users\Christopher\Desktop\thecycle\images\coding\nba_spread\cumulative_earnings.jpg"
+          <img src = "..\..\images\coding\nba_spread\cumulative_earnings.jpg"
           alt src = "" class = "content__img">
           I honestly believe that the money made was more luck than skill, so I think I'm going to give a red light to
           my betting career and instead spend my enormous net earnings on a nice meal in the city.</p>
@@ -362,7 +362,7 @@
     </footer>
 
 
-    <script src="C:\Users\Christopher\Desktop\thecycle\js\index.js"></script>
+    <script src="..\..\js\index.js"></script>
 
     </body>
   </html>
