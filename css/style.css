@@ -15,7 +15,7 @@
 
   --clr-light: #fff;
   --clr-dark: #303030;
-  --clr-accent: #16e0bd;
+  --clr-accent: #DDDDDD;
 
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
@@ -98,7 +98,7 @@ h3 {
 }
 
 h1 { font-size: var(--fs-h1)}
-h2 { font-size: var(--fs-h2)}
+h2 { font-size: var(--fs-h1)}
 h3 { font-size: var(--fs-h3)}
 
 .section__title {
@@ -284,17 +284,17 @@ header {
 /* My Services Section */
 
 .my-services {
-  background-color: var(--clr-dark);
-  background-image: url(../images/blurred_office.jpg);
+  background-color: #ffffff;
+  /*background-image: url(../images/white_backdrop.jpg);*/
   background-size: cover;
   color: var(--clr-light);
   text-align: center;
 }
 
 .section__title--services {
-  color: var(--clr-accent);
+  color: var(--clr-dark);
   position: relative;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.0em;
 }
 
 .section__title--services::after {
@@ -309,12 +309,25 @@ header {
 
 .services {
   margin-bottom: 4em;
+  font-weight: 500;
 }
 
-  .serivce {
+  .service {
+    color: var(--clr-dark);
     max-width: 500px;
     margin: 0 auto;
   }
+
+  .service__header{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top:.75rem;
+    padding-bottom: .75rem;
+    font-family: var(--ff-secondary);
+    background-color: var(--clr-accent);
+  }
+
+
 
 @media (min-width: 800px){
   .services {
@@ -322,6 +335,14 @@ header {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+
+
+  .btn {
+      display: inline-flex;
+      margin-right: 7.5rem;
+      margin-left: 7.5rem;
   }
 
   .service + .service {
@@ -369,13 +390,18 @@ header {
     grid-area: img;
     position: relative;
     z-index: 2;
+    max-width: 300px;
   }
 }
 
 /* My Work */
 
+.section__title--gallery{
+  color: var(--clr-dark);
+  padding-bottom: 4rem;
+}
+
 .my-work{
-  background-color: var(--clr-dark);
   color: var(--clr-light);
   text-align: center;
 }
@@ -416,8 +442,8 @@ header {
 /* footer */
 
 .footer {
-  background: #111;
-  color: var(--clr-accent);
+  background: #ffffff;
+  color: var(--clr-dark);
   text-align: center;
   padding: 2.5em 0;
   font-size: var(--fs-h3);
