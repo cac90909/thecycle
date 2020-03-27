@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <title> thecycle</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "..\..\css\coding\got_markov.css">
+    <script src="https://kit.fontawesome.com/7acb9305dd.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class = "logo">
+        <img src = "..\..\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
+      </div>
+      <button class = "nav-toggle" aria-label="toggle navigation">
+        <span class = "hamburger"></span>
+      </button>
+      <nav class = "nav">
+        <ul class = "nav__list">
+          <li class = "nav__item"><a href = "..\..\index.html"
+            class = "nav__link" style = "font-size: 4.0rem;">Home</a></li>
+          <li class = "nav__item"><a href = "..\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
+          <li class = "nav__item"><a href = "..\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
+          <li class = "nav__item"><a href = "..\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <!-- Introduction -->
+    <section class = "intro">
+      <h1 class = "section__title section__title--intro">
+        Game of Thrones Dialogue Predictions</h1>
+      <p class = "section__subtitle section__subtitle--intro">March 18th, 2020</p>
+    </section>
+
+    <img src = "..\..\images\coding\got_markov\intro_img.jpg" alt="" class = "intro__img">
+
+    <div class = "portfolio-item-individual">
+      <p> What started out to be an introductory level Natural Language Processing (NLP) project
+        turned very quickly into one of my favorite games from elementary school: <b>telephone.</b>
+      <p>Without going too much deeper into the result of this project, I would like to start out by giving some background information
+        on the algorithm it implements
+        (we love some good ol fashioned suspense at thecycle).
+        This project made use of a <b>state reliant prediction model</b> called
+        <a href ="https://en.wikipedia.org/wiki/Markov_chain" class = "inline-link" target = "_blank">Markov Chains</a>.</p>
+        <p>
+        I'll explain this concept by using the example of a pitcher's sequence of pitches during a baseball game.
+        The Markov Chain would be very useful in attempting to answer a question such as:
+        if the pitcher threw a fastball last pitch, what pitch will the pitcher throw next?
+        A Markov Chain seeks to answer this question by using <b>probability.</b>
+        The model would look at the data for all pitches the pitcher has thrown in the past.
+        Historically, what typically is the pitch that comes after this pitcher's fastball?
+        For sake of example, I'll say that out of the 1,000 fastballs thrown this season by the pitcher,
+        the pitches that come after that fastball historically aggregate to 500 changeups, 250 curveballs, and 250 sliders.
+        To generate the predicted next pitch, the Markov Chain takes the <b>current state</b>, historically analyzes the odds
+        of all the potential <b>sequential states</b>, and then generates that <b>sequential state.</b></p>
+        <p>The Markov Chain has a 50% chance of predicting a changeup as the next pitch following a fastball
+          because the pitcher has thrown 1000 total pitches and 500 of which were changeups.
+          The model would then look at the historical changeup statistics. Following the pitcher's changeup, the stats for
+          the next pitch aggregate to be
+          250 fastballs, 150 curveballs, and 100 sliders. The Chain would then rely on those probability statistics
+          to generate the next most probable pitch. </p>
+          <p>
+          From this example, we can see that this mechanism is called a chain because by using <b>historical statistics</b>
+          it is possible to predict an <b>infinte chain of events</b>
+          just by being given the <b>current state.</b>
+          Therefore, Markov Chains are extremely useful when trying to predict data that follows a <b>sequential pattern</b> and is
+          very much so reliant on <b>historical probability.</b></p>
+
+          <h2> The Dataset </h2>
+          <p>I stumbled upon this type of Machine Learning the other day when I was
+          browsing Google's AI Hub (which you should totally
+          <a href ="https://aihub.cloud.google.com/u/0/s?category=notebook" class = "inline-link" target = "_blank">check out</a>
+          because they have a ton of really cool Machine Learning projects on there) and after learning about the rationale behind
+          Markov Chains, I became really intriguied and wanted to apply this concept to something practical.
+          Whenever you want to apply a newly learned concept, there is only one logical place you should go to: <b> Kaggle.</b>
+          Simply because they have a plethora of datasets and
+          I have no doubt you will find a dataset that fits the purpose you have in mind.</p>
+          <p>
+          Now that I'm done plugging really neat sites into my blog, I'll proceed with my narrative. So, I came across a
+          <a href ="https://www.kaggle.com/anderfj/game-of-thrones-series-scripts-breakdowns" class = "inline-link" target = "_blank">
+            dataset</a>
+            that details <b>every single line of dialogue in the Game of Thrones series.</b>
+            Before proceeding any further, I am going to be 100% transparent in saying that I have never seen a single episode of
+            GOT (probably to your benefit since I can't make any cheesy GOT jokes during the course of this article).
+            I just wanted to get that
+            out in the open because I need to maintain a clean conscience to ensure the quality of my writing.
+            Anyways, I found this dataset and I thought it would be perfect for what I was trying to do.</p>
+            <p>The idea here was that I could look at a character's <b>historical dialogue</b> and use it to
+              generate <b>future dialogue.</b>
+              For example, if a character said the word 'red' I would look at every word that the character has said that has historically
+              followed the word 'red'. The model would then predict the <b>next word</b>
+              and then the chain would take into effect in generating the <b>rest of the sentence.</b></p>
+              <p>
+              I wanted to take this a step further and try to generate intercharacter dialogue and make it sufficient enough to
+              comprise an <b>entirely new scene</b> of Game of Thrones.</p><p>
+              Yup, never before seen GOT content is coming your way in just a second.  </p>
+
+              <h2>Analyzing the Dataset</h2>
+              <p> There were some inital issues with the dataset in that the values were improperly being seperated.
+                <img src = "..\..\images\coding\got_markov\spreadsheet.JPG"
+                alt src = "" class = "content__img">
+                I applied some delimiting functions in Excel to get that straightened away.</p><p>
+                Moving over to Python, I wanted to get a better glimpse into what exactly I was looking at.
+                <img src = "..\..\images\coding\got_markov\basic_info.JPG"
+                alt src = "" class = "content__img">
+                The dataset describes various things about each piece of dialogue, including the character who said it,
+                the season/episode it occured in, and the date that that piece of dialogue was aired on TV. Useful stuff.</p><p>
+                Additioanlly, looking at the shape of the data, there are a lot of potential words we can analyze for the Markov Chain
+                to come.
+              </p>
+              <p>
+              As someone who, like I said, has never seen an episode of Game of Thrones before, I wanted to get more familiar with
+              the nature of the series by seeing <b>how many characters</b> are featured on the show.
+              <img src = "..\..\images\coding\got_markov\characters.JPG"
+              alt src = "" class = "content__img">
+              This screenshot is only a fraction of the characters that play a role in GOT.</p><p>
+              The purpose of this project is to generate dialogue, but I wanted to produce the <b>most accurate dialogue</b> possible.
+              This means that I should look at characters that speak the most in GOT because they have the most dialogue
+              that could be analyzed in the Markov model.</p><p>
+              Essentially, the <b>more data</b> I have on the character, the <b>more accurate</b> the Markov Chain can predict dialogue.
+            </p>
+            <p>
+            I proceeded by filtering the dataframe via the <i>"Name"</i> column and then calling <i>value_counts()</i> on this filtered
+            Pandas series because names that have a <b>higher count</b>
+            means that they appear more in the dataframe and thus have <b>more lines of dialogue.</b></p>
+            <img src = "..\..\images\coding\got_markov\value_count.JPG"
+            alt src = "" class = "content__img">
+            <p>I'm not sure who this Tyrion character is, but he/she/it certainly has a lot to say.</p><p>
+              I used the following code to generate this next visualization: </p>
+              <img src = "..\..\images\coding\got_markov\matplot.JPG"
+              alt src = "" class = "content__img">
+              <img src = "..\..\images\coding\got_markov\bar_chart.JPG"
+              alt src = "" class = "important__img">
+            <p> Yup, quite the chatty Kathy.</p>
+            <p> Dialogue frequency is pretty similar within the characters ranked 2nd to 5th, drops a tad
+              in those ranked 6th to 7th, and then drops again for the characters ranked 8th to 15th in dialogue levels.
+              This visualization is useful because it lets me know that there is a drop off in dialogue at these levels.
+              Consequentially, I'm most likely only going to use the <b>top 5</b> characters for generating dialogue
+              so I can maintain a <b>higher level of accuracy</b></p>
+
+        <p> In order to generate <b>new dialogue</b>, I would have to use some more data wrangling to grab a single character's <b>list of
+          sentences</b>, divide those into <b>words</b>, and then create an object
+            to store every word's <b>different sequential outcomes.</b></p>
+
+            <p> To start, I created a function that, when given a list of sentences, will flatten out the list to output a list of
+              the individual words that comprise each sentence.</p>
+              <img src = "..\..\images\coding\got_markov\get_words.JPG"
+              alt src = "" class = "content__img">
+              <img src = "..\..\images\coding\got_markov\get_words_example.JPG"
+              alt src = "" class = "content__img">
+              <p> The original complication was that sentences were spiratically divided into different lists, so I used
+                <b> list comprehension </b> to remove each sentence from its sublist,
+                then gather each word by splitting each sentence whenever there
+                was a space in the sentence, and then finally got each word out of its nested list by using a little
+                bit of a more complex list comprehension.
+                I accessed <b>each element</b> of <b>each sublist</b>
+                contained by the <b>outer list</b> and then stored each element into the list <i> words_flat </i>.</p>
+
+              <p> Next, I needed to generate actual chains which entails assigning each word to all of the next potential words.
+                My code and an example of its application is shown in the following screenshots: </p>
+                <img src = "..\..\images\coding\got_markov\generate_markov_chain.JPG"
+                alt src = "" class = "content__img">
+                <img src = "..\..\images\coding\got_markov\markov_chain_example.JPG"
+                alt src = "" class = "content__img">
+              <p> The function takes a list of words, loops through the words while simultaneously <b>zipping</b> every word with
+                its preceding word together,
+                and then assigns these two things to a <i>key value pair</i> in a <i>defaultdictionary object</i>.</p><p>
+                A defaultdictionary was used instead of a regular dictionary because assigning values in a defaultdictionary can be done
+                without having declared the key value prior. Essentially, keys and values can be declared at the <b>same time</b>
+                when utilizing a defaultdictionary, which makes things a lot easier. </p>
+
+                <p> Next, I wanted to generate actual dialogue given a list of words and the words to follow them.
+                    The code for this and an example of using it is shown in the next two screenshots:</p>
+                  <img src = "..\..\images\coding\got_markov\generate_sentence.JPG"
+                  alt src = "" class = "content__img">
+                  <img src = "..\..\images\coding\got_markov\generate_sentence_example.JPG"
+                  alt src = "" class = "content__img">
+                <p>The <i>generate_sentence()</i> function requires two arguments: a <b>dictionary of words</b>
+                  and the <b>max number of desired words in a sentence.</b>
+                  The function will generate an amount of words somewhere between one and the specified input ceiling. </p>
+                  <p>
+                  A major caveat about Markov Chains is figuring out the <b>initial state</b>. The Chain has no problem generating the
+                  next state, but it requires knowledge about the very first state.
+                  I overcame this by randomly picking a word from the chain's list of <b> key values </b>.
+                  Next, I created a loop to look at the current word's values, randomly pick a value, reassign the <b>next current
+                  word</b> to be the <b>recently picked word</b>, and then add the <b>current word</b> on to the end of the <b>ongoing sentence.</b>
+                  This process would be repeated until the <b>count variable</b> is reached. </p>
+
+                  <p> Next, I needed to write a function that would
+                    facilitate the dictionary construction process given a list of characters whom the user would want to generate
+                    dialogue for.
+                     I needed to be able to automate this process when given an<i> n amount
+                    of characters</i>, so I built the <i> create_dicts() </i> function to do just that. The code for this function
+                    is shown in the following: </p>
+                    <img src = "..\..\images\coding\got_markov\create_dicts.JPG"
+                    alt src = "" class = "content__img">
+                  <p> The function requires an input for the amount of characters you wanted to generate a dictionary for.
+                    Because of accuracy implications, it assumes that for whatever <i>n</i> quantity of characters that you want to
+                    create a dictionary for, that these are also the <i>n-most </i> popular characters,
+                    in terms of <b>dialogue frequency.</b> </p><p>
+                    Using <i>value_counts()</i>, the function creates a Pandas series ranking
+                    all of the characters and then it <i>slices</i> the series to retain only the top <i> n-most </i> popular characters.
+                    The function further slices the dataframe in each iteration of the loop
+                     to only get the sentences that pertain to the particular character whose dictionary object is being created during
+                     that iteration of the loop.
+                     Next, I called on the earlier created <i>  markov_chain()</i> function to create this dictionary object.
+                     Each character's individual dictionary object is then stored in a list called <i> char_dicts </i>.
+                   </p>
+                   <h2> Lights, Camera, Action! </h2>
+                   <p>
+                    This program culminates with the <i>create_scripts()</i> function, whose code is shown below: </p>
+                    <img src = "..\..\images\coding\got_markov\create_scripts.JPG"
+                    alt src = "" class = "content__img">
+                    <p>
+                      The function begins by creating a list of character dictionaries based on the desired number of characters
+                      you want in your <b>brand new GOT production!</b>
+                      Next, it generates a list of the characters that will be speaking in the outputed dialogue.
+                      This list will be used for labeling purposes in the dialogue so that I can index which character is saying
+                      which line.
+                      Next, I created a loop that iterates for the desired number of lines in the outputed dialogue.
+                      During each iteration, a character is picked at random and a sentence for that character is generated using the
+                      previously created dictionary and the <i> generate_sentence() </i> function.
+                      This sentence is then displayed in a Hollywood Script format.
+                    </p>
+                    <p>
+                      Now, the moment we have all been waiting for. Rotten Tomatoes better give this production at least a 4.9/5.0 considering
+                      all of the work that went into the writing of this script (and by that, I mean all of the random probabilities that
+                      I am certainly going to exploit and take credit for).</p><p>
+                      I am going to call the <i> create_scripts() </i> function using the signature: <i> create_scripts(3,20,12) </i>.
+                      This means that I want to use the <b>top 3</b> most popular characters,
+                      and I want my dialogue to be <b>20 lines</b> long with each line
+                      comprised of at most <b>12 words.</b>
+                      Doing so produced the following output:</p>
+                      <img src = "..\..\images\coding\got_markov\create_scripts_example.JPG"
+                      alt src = "" class = "content__img">
+                    <p> I'm not too sure that George R. Martin would be proud of this writing, but I certainly am!</p><p>
+                      As you can see, it seems pretty random and perhaps even the product of a madlib game
+                      or possibly even from the game telephone! </p> <p>
+                      Seriously, that game was fun.
+                      I don't know if you guys played, but essentially one person would say a sentence by whispering it into the
+                      adjacent person's ear, and then that person would whisper it into the next person's ear and the process would
+                      continue until it reached the final person.
+                      The game is extremely fun because by the time it reached the final person, the sentence would be so wacky due
+                      to the fact that
+                      during each time the sentence is whispered into the next person's ear,
+                      a word or two would be misinterpreted or forgot by each person, making it so
+                      that when it reached the end of the line the sentence made <b>no sense.</b> </p>
+
+                    <p> I give this seemingly uneccessary recountment of my youth because
+                      the script for this new GOT scene feels like it went through a game of
+                        telephone. As I learned, Markov Chains are not sufficient enough for generating coherent text
+                        because they rely <b>solely
+                        on probability</b> and the <b>context</b> of a word is never taken into account. </p>
+
+                    <p> Moving forward, I would improve on the idea of this project by incorporating a Machine Learning algorithm
+                        that could better encapuslate the <b>syntax</b> and <b>structure</b> of the English Language when attempting to
+                        construct original sentences. Markov Chains are useful, but their model serves to be overly simplistic when
+                        applying them to the English Language because English is such a nuanced and multi-faceted subject that
+                        takes humans a <b>lifetime</b> of learning and practicing to fully comprehend and apply it. </p>
+
+                    <p> I might not have cracked the code for coming up with a money maker script writer, but I certainly got to
+                        relive parts of my youth by being reminded of Telephone. Natural Language Processing is a fascinating topic
+                        that I will certainly look more into in the future.</p>
+                        <p> Until then, thanks for reading and be on the lookout for
+                        Game of Thrones: the Sequel. Coming out to a Netflix near you!</p>
+
+                        <p><a href ="https://github.com/cac90909/GOT_Markov" style = "color : blue" class = "inline-link" target = "_blank">
+                            Code featured on GitHub
+                        </a></p>
+
+
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href ="mailto:chris.castro@emory.edu" class = "footer__link">chris.castro@emory.edu</a>
+      <ul class = "social-list">
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://github.com/cac90909" target = "_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.instagram.com/thecyclecooking/" target = "_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.linkedin.com/in/christophercastro555/" target = "_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.goodreads.com/user/show/111006989-chris" target = "_blank">
+            <i class="fab fa-goodreads"></i>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+
+    <script src="..\..\js\index.js"></script>
+
+    </body>
+  </html>

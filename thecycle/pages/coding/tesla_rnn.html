@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <title> thecycle</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "..\..\css\coding\got_markov.css">
+    <script src="https://kit.fontawesome.com/7acb9305dd.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class = "logo">
+        <img src = "..\..\images\logo\cycle_logo_crop1.jpg" alt = "" class = "logo__img">
+      </div>
+      <button class = "nav-toggle" aria-label="toggle navigation">
+        <span class = "hamburger"></span>
+      </button>
+      <nav class = "nav">
+        <ul class = "nav__list">
+          <li class = "nav__item"><a href = "..\..\index.html"
+            class = "nav__link" style = "font-size: 4.0rem;">Home</a></li>
+          <li class = "nav__item"><a href = "..\categories\coding.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Codes</a></li>
+          <li class = "nav__item"><a href = "..\categories\commentating.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Commentates</a></li>
+          <li class = "nav__item"><a href = "..\categories\cooking.html" class = "nav__link" style = "font-size: 4.0rem;">Chris Cooks</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <!-- Introduction -->
+    <section class = "intro">
+      <h1 class = "section__title section__title--intro">
+        RNN: Tesla Stock Prices</h1>
+      <p class = "section__subtitle section__subtitle--intro">March 28th, 2020</p>
+    </section>
+
+    <img src = "..\..\images\coding\tesla_rnn\cybertruck.jpg" alt="" class = "intro__img">
+
+    <div class = "portfolio-item-individual">
+      <p> I've been moving further and further down the data science track and have finally found myself falling into the
+        <b> Neural Network </b> rabbit hole.
+        Not that that is a bad thing, I personally think the concept is fascinating and honestly not too too difficult to grasp.</p>
+
+      <p> For those unfamiliar, a Neural Network is composed of smaller units called
+        <a href ="https://en.wikipedia.org/wiki/Perceptron" class = "inline-link" target = "_blank">Perceptrons</a>.
+        A perceptron performs a similar function to a simple regression equation in that it takes an input, multiplies that
+        input by a coefficient, adds a intercept term to that product, and then an output is produced. </p>
+
+        <p>However, for Neural Networks, the difference is a slight matter of complexity.
+        Neural Networks still take inputs and multiply them by <b>weights.</b>
+        However, these weights now come in the form of matrices.
+        Additionally, the Neural Network will sum these weighted inputs, add a <b>bias term</b> (intercept),
+        and put this number into a <b>non-linear activation function.</b></p>
+
+        <p>The purpose of this non-linear activation function explains one of the reasons why Neural Networks are useful in the first place:
+          they can model and predict relationships in datasets that couldn't be modeled by a simple linear regression.
+          An example of a non-linear activation function is the sigmoid function.
+          <img src = "..\..\images\coding\tesla_rnn\sigmoid.png"
+          alt src = "" class = "content__img"></p>
+          <p> Based on the value that goes into the sigmoid function, a value between 0 and 1 will be outputed.</p>
+
+          <p> A Neural Network improves its ability to predict through <b> loss optimization </b>.
+          Each iteration, the Neural Network predicts and then compares its prediction of labels to the actual labels, and will
+          subsequently
+            produce a <b>loss value</b> (the difference between the actual and predicted value).</p>
+
+          <p>Based on that loss value, the Neural Network will update the weight matrix that is being multiplied with the inputs.
+          </p>
+
+          <p>This poses the question of: which weights will produce the lowest loss? </p>
+
+          <p> You can image each combination of variables being multipled by various weights as a 3-D plane.
+            <img src = "..\..\images\coding\tesla_rnn\backprop.png"
+            alt src = "" class = "content__img"></p>
+
+          <p> The peaks of this planes will yield higher losses and the troughs will yield lower losses.
+              The Neural Network algorithm keeps trying various combinations of weights until it reaches a local minima
+              or a point of <b> absolute convergence. </b>
+              This process of slowly moving down the various gradients depicted in this 3-D plane environment is called
+              <b> gradient descent.</b></p>
+
+            <p> The topic of Neural Networks becomes extremely nuanced the further you go, but outlined above is the main idea. </p>
+            <h2> Recurrent Neural Networks </h2>
+          <p>
+                For this project I was dealing with a specific type of Neural Network called a
+                <a href ="https://en.wikipedia.org/wiki/Recurrent_neural_network" class = "inline-link" target = "_blank">
+                  Recurrent Neural Network (RNN)</a>.
+                The difference between a normal NN and a RNN is that RNN's have access to data from previous states.
+                Meaning, one perceptron takes input data, does its internal calculations with weights and non-linear activation functions,
+                and then spits that data out as an output as well as an input into the next perceptron. </p>
+
+                <p>
+                So, in a RNN model, all of the cells are <b>interconnected</b> because they share data.
+                <img src = "..\..\images\coding\tesla_rnn\rnn.png"
+                alt src = "" class = "content__img"></p>
+
+            <p> This makes RNNs very useful when it comes to data that is time dependent and/or sequential, providing high utility in
+              applications such as time series prediction or
+              <a href ="https://en.wikipedia.org/wiki/Natural_language_processing" class = "inline-link" target = "_blank">
+                Natural Language Processing</a>.</p>
+                <p>
+                However, due to the nature of backpropogation, a computational problem arises called <b> vanishing gradients </b>.
+                Essentially, because in order to calculate gradients, you are taking a sequence of derivatives, this means that
+                when you are given low numbers, the calculated gradients continually decrease . </p>
+
+              <p>This is problematic, but can be remedied by the help of a <b>Long Short Term Memory, or LSTM.</b>
+                An LSTM is a specific type of architecture implemented into RNN cells to facilitate the passage of information
+                from one cell to the next.
+                They apply their own non-lineararity activation functions as well.
+                Their diagram is shown below:
+                <img src = "..\..\images\coding\tesla_rnn\lstm.png"
+                alt src = "" class = "content__img"></p>
+
+              <p>LSTMs act as gates in that through their activation functions, they decide what information passes through a cell.
+              Doing so helps to minimize the issue of vanishing gradients.</p>
+
+              <h2> The Project </h2>
+
+              <p> With that huge chunk of background info in mind, I'm going to move forward by explaining the project I completed.
+                I worked on modeling Tesla Stock data through a RNN infrastructure, accompanied by the LSTM framework. </p>
+
+                <p> I started by importing the data,
+                  <a href ="https://finance.yahoo.com/quote/TSLA/history?p=TSLA" class = "inline-link" target = "_blank">
+                    via Yahoo Finance. </a>
+                    The data is a typical daily time series on Tesla's Stock starting from 2010 to present day.</p>
+                    <p>
+                   I then performed an 80-20 split on it to produce a <b>train</b> and <b> test </b> set.</p>
+                   <img src = "..\..\images\coding\tesla_rnn\train_test.JPG"
+                   alt src = "" class = "content__img">
+
+                  <p> The data included columns on: adjusted close, date, high, and low, so I moved to drop these things.
+                    I only want to predict Tesla's stock based on its <b>open</b> and <b>close</b> for that given day.</p>
+
+                  <p> Because my model contains more than one feature (open and close) and they have different ranges of values,
+                    I wanted to <b>normalize</b> the data.
+                    Essentially, putting all numerical data on a scale from 0 to 1.
+                    Doing so would mean computations are done in <b>relative</b>,
+                    rather than <b>absolute</b>, terms.
+                    <img src = "..\..\images\coding\tesla_rnn\normal.JPG"
+                    alt src = "" class = "content__img"></p>
+
+                  <p> Neural Networks function by users feeding them <b>batches</b> of data.
+                    In my case, a batch would consist of x amount of days of data and then a label to accompany.
+                    I chose <i>x</i> to equal 30.
+                    Meaning, I would feed my model 30 days worth of stock data, and then it would predict the Tesla Stock
+                    price for the <b>31st day.</b>
+                    <img src = "..\..\images\coding\tesla_rnn\batch.JPG"
+                    alt src = "" class = "content__img"></p>
+
+                  <p> Next, I physically created the model using the <i> tensorflow.keras </i> library.
+                    <img src = "..\..\images\coding\tesla_rnn\create_model.JPG"
+                    alt src = "" class = "content__img"></p>
+
+                  <p> This model consists of alternating <i>LSTM</i> and <i>Dropout</i> layers.
+                    The purpose of the <b> Dropout </b> layers are to prevent overfit in a model by randomly selecting
+                    <i>x</i> amount of data points to dropout of the dataset.
+                    I chose this value to be 30% each time.
+                    Additionally, I chose the the <i> relu </i> activation function because of its
+                    <a href ="https://towardsdatascience.com/activation-functions-and-its-types-which-is-better-a9a5310cc8f"
+                    class = "inline-link" target = "_blank">
+                    increased performance.</a> </p>
+
+                    <p> The model is summarized below:
+                      <img src = "..\..\images\coding\tesla_rnn\model.JPG"
+                      alt src = "" class = "content__img"></p>
+
+                    <p> Next, I compiled the model using the <i> Adam </i> optimizer and used
+                      <i> MeanAbsolutePercentageError </i> as my loss function because my features were in terms of
+                      percentages, from the normalization. </p> <p>
+                      After that, I fit my model.
+                      Essentially, trying to get the best weight matrix that would relate the training x data to the training y data.
+                      I kept my <i>epochs</i> at a relatively low number so I could prevent my model from an <b>overfit</b> issue.
+                      <img src = "..\..\images\coding\tesla_rnn\fit.JPG"
+                      alt src = "" class = "content__img"></p>
+
+                      <p> Having created my actual model, I wanted to test its <b> accuracy </b>.
+                        For the test data, I used the same batch process outlined above.
+                        I wanted to predict the 31st day given the first 30 days, so I looped over the data to
+                        create these <b>individual batches.</b> </p>
+
+                    <p> Because the data being used was still in relative terms, I scaled it back to its original stock price value
+                      so that it would be better to <b>visualize </b>.
+                      The final visualization is shown below:
+                      <img src = "..\..\images\coding\tesla_rnn\graph.JPG"
+                      alt src = "" class = "content__img"></p>
+
+                      <p> AND BOOM! Just like that, my very first Neural Network project has come to a conclusion.
+                          My network did a fairly decent job at predicting the test labels initially, but Tesla had a meteoric rise
+                          and fall in the past 100 days that my model <b>underpredicted.</b></p>
+
+                      <p> Perhaps I could improve on my model by increasing the <i> learning rate </i> of the model, so that it would
+                        do a better job at <b>responding</b> to <b>new trends</b> it picks up. However, this comes at the risk of picking up on
+                        <b>false trends</b> as well. </p>
+
+                      <p> Regardless, this was an extremely interesting project to work because I think the topics
+                        of Deep Learning and Neural Networks are very interesting.
+                        I will for sure try and do more of these in the future. </p>
+
+                        <p> Thanks for reading!! </p>
+
+
+
+                    <p><a href ="https://github.com/cac90909/tesla_rnn" style = "color : blue" class = "inline-link" target = "_blank">
+                            Code featured on GitHub
+                        </a></p>
+
+
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href ="mailto:chris.castro@emory.edu" class = "footer__link">chris.castro@emory.edu</a>
+      <ul class = "social-list">
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://github.com/cac90909" target = "_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.instagram.com/thecyclecooking/" target = "_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.linkedin.com/in/christophercastro555/" target = "_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class = "social-list__item">
+          <a class = "social-list__link" href = "https://www.goodreads.com/user/show/111006989-chris" target = "_blank">
+            <i class="fab fa-goodreads"></i>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+
+    <script src="..\..\js\index.js"></script>
+
+    </body>
+  </html>
